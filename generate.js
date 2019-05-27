@@ -118,13 +118,13 @@ theProvs.forEach((v, id) => {
     provinces.push({ code: `${id}`, name: v.split(' ')[1] })
 })
 
-prov.forEach(v => {
+prov.forEach((v, province) => {
     v.split('|').forEach(c => {
         const s = c.split(' ')
         cities.push({
             code: s[0].split('-')[0],
             name: s[1].split('-')[0],
-            province: s[1].split('-')[1],
+            province: `${province}`,
         })
     })
 })
@@ -143,6 +143,6 @@ provqx.forEach(v => {
 })
 
 const fs = require('fs')
-fs.writeFileSync('./provinces.json', JSON.stringify(provinces))
-fs.writeFileSync('./cities.json', JSON.stringify(cities))
-fs.writeFileSync('./counties.json', JSON.stringify(counties))
+fs.writeFileSync('dist/provinces.json', JSON.stringify(provinces))
+fs.writeFileSync('dist/cities.json', JSON.stringify(cities))
+fs.writeFileSync('dist/counties.json', JSON.stringify(counties))
